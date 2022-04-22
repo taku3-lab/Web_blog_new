@@ -1,0 +1,27 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}TOPページ{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1>WEBアプリケーション(簡易ブログ)</h1>
+    
+    <a href="/create" button type="button" class="btn btn-primary">新規作成画面</a>
+
+    <a href="/logout" button type="button" class="btn btn-primary">ログアウト</a> 
+
+    {% for post in posts %}
+    <article>
+        <h2>{{ post.title }}</h2>
+        <a href="/{{post.id}}/update" role="button">編集</a>
+
+        <a href="/{{post.id}}/delete" role="button">削除</a>
+
+        <p>作成日時： {{ post.created_at }}</p>
+        <p></p>
+        <p>{{ post.body }}</p>
+        <p>_____________________________________________________</p>
+    </article>
+    {% endfor %}
+</div>
+{% endblock %}
